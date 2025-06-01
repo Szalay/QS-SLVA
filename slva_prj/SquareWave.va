@@ -1,0 +1,58 @@
+`include "disciplines.vams"
+`include "constants.vams"
+
+module SquareWave(a, b, c, GND);
+inout a, b, c, GND;
+electrical a, b, c, GND;
+
+parameter real U_DC = 36;
+
+// a: 0, b: 1, c: 2
+parameter real PH = 0;
+
+// +: 1, -: -1
+parameter real DIR = 1;
+
+branch (a, GND) VA;
+branch (b, GND) VB;
+branch (c, GND) VC;
+
+real y;
+
+analog begin
+	//@(initial_step) begin
+	//	$strobe(PH);
+	//end 
+	
+	y = 1;
+	if ($abstime < 0.000075)
+		y = 0;
+	else if ($abstime < 150u)
+		y = DIR;
+	else if ($abstime < 300u)
+		y = -DIR;
+	else if ($abstime < 375u)
+		y = DIR;
+	else
+		y = 0;
+	
+	if (PH == 2) begin
+		//$strobe("c");
+		V(VA) <+ -1.0/3.0*U_DC*y;
+		V(VB) <+ -1.0/3.0*U_DC*y;
+		V(VC) <+  2.0/3.0*U_DC*y;
+	end
+	else if (PH == 1) begin
+		//$strobe("b");
+		V(VA) <+ -1.0/3.0*U_DC*y;
+		V(VB) <+  2.0/3.0*U_DC*y;
+		V(VC) <+ -1.0/3.0*U_DC*y;
+	end
+	else begin
+		//$strobe("a");
+		V(VA) <+  2.0/3.0*U_DC*y;
+		V(VB) <+ -1.0/3.0*U_DC*y;
+		V(VC) <+ -1.0/3.0*U_DC*y;
+	end
+end
+endmodule
