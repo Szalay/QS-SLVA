@@ -1,0 +1,15 @@
+`include "disciplines.vams"
+`include "constants.vams"
+
+module PVAM(VP, VN);
+inout VP, VN;
+electrical VP, VN;
+
+parameter real udc = 5;
+
+branch (VP, VN) VS;
+
+analog begin
+	V(VS) <+ udc;
+end
+endmodule
