@@ -1,0 +1,91 @@
+`include "disciplines.vams"
+`include "constants.vams"
+
+`define q_b 2.0/3.0*`M_PI
+`define q_c 4.0/3.0*`M_PI
+
+module PMSM(a, b, c, S, th_M);
+	
+	inout a, b, c, S, th_M;
+	
+	electrical a, b, c, n, th_M;
+	rotational_omega S;
+	
+	// Resistance
+	parameter real R = 0.654;
+	
+	// D-direction inductance
+	parameter real L_dd = 145u;
+	
+	// Q-direction inductance
+	parameter real L_qq = 188u;
+	
+	// Polarity-dependent saliency coefficient
+	parameter real Gamma_0 = 0.16u;
+	
+	// Permanent magnet flux-linkage
+	parameter real Psi_PM = 0.02483;
+	
+	// Number of pole-pairs
+	parameter real z_P = 2.0;
+	
+	// Rotor inertia
+	parameter real J = 200e-7;
+	
+	// Rotor damping
+	parameter real B = 3e-5;
+	
+	// Initial mechanical rotor position in degrees
+	parameter real th_M0 = 0.0;
+	
+	// Electrical branches, (+, -) name;
+	branch (a, n) pha;
+	branch (b, n) phb;
+	branch (c, n) phc;
+	
+	// Model variables
+	real i_a, i_b, i_c;
+	real u_d, u_q, i_d, i_q, Psi_d, Psi_q;
+	real th, w, M_E;
+	
+	analog begin : main
+		// Electrical angular velocity and position
+		w = z_P*Omega(S);
+		th = z_P*(idt(Omega(S), 0) + th_M0*`M_PI/180.0);
+		
+		// Park transfroming the currents
+		i_d = 2.0/3.0*( 
+			I(pha)*cos(th) + 
+			I(phb)*cos(th - `q_b) + 
+			I(phc)*cos(th - `q_c)
+		);
+		i_q = -2.0/3.0*(
+			I(pha)*sin(th) + 
+			I(phb)*sin(th - `q_b) + 
+			I(phc)*sin(th - `q_c)
+		);
+		
+		// Flux model
+		Psi_d = Psi_PM + L_dd*i_d - 9.0/8.0*Gamma_0*i_d*i_d - 3.0/8.0*Gamma_0*i_q*i_q;
+		Psi_q = L_qq*i_q - 3.0/4.0*Gamma_0*i_d*i_q;
+		
+		// Voltage equations
+		u_d = R*i_d + ddt(Psi_d) - w*Psi_q;
+		u_q = R*i_q + ddt(Psi_q) + w*Psi_d;
+		
+		// Inverse Park transforming the voltages
+		V(pha) <+ u_d*cos(th) - u_q*sin(th);
+		V(phb) <+ u_d*cos(th - `q_b) - u_q*sin(th - `q_b);
+		V(phc) <+ u_d*cos(th - `q_c) - u_q*sin(th - `q_c);
+		
+		// Electromagnetic torque
+		M_E = 3.0/2.0*z_P*(Psi_d*i_q - Psi_q*i_d);
+		
+		// M_L = M_E - B w - J dw/dt
+		Tau(S) <+ M_E - B*Omega(S) - ddt(J*Omega(S));
+		
+		// Mechanical rotor position
+		V(th_M) <+ th/z_P;
+	end
+
+endmodule
