@@ -1,0 +1,18 @@
+`include "disciplines.vams"
+`include "constants.vams"
+
+`define q_b 2.0/3.0*`M_PI
+`define q_c 4.0/3.0*`M_PI
+
+module Park(a, b, c, th, d, q);
+input a, b, c, th;
+output d, q;
+electrical a, b, c, th, d, q;
+
+parameter real P = 2.0/3.0;
+
+analog begin : main
+	V(d) <+ P*( V(a)*cos(V(th)) + V(b)*cos(V(th)-`q_b) + V(c)*cos(V(th)-`q_c));
+	V(q) <+ P*(-V(a)*sin(V(th)) - V(b)*sin(V(th)-`q_b) - V(c)*sin(V(th)-`q_c));
+end
+endmodule

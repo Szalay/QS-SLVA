@@ -1,0 +1,20 @@
+`include "disciplines.vams"
+`include "constants.vams"
+
+`define q_b 2.0/3.0*`M_PI
+`define q_c 4.0/3.0*`M_PI
+
+module InversePark(d, q, th, a, b, c);
+input d, q, th;
+output a, b, c;
+electrical d, q, th, a, b, c;
+
+parameter real R = 0;
+
+analog begin : main
+	V(a) <+ V(d)*cos(V(th)) - V(q)*sin(V(th));
+	V(b) <+ V(d)*cos(V(th)-`q_b) - V(q)*sin(V(th)-`q_b);
+	V(c) <+ V(d)*cos(V(th)-`q_c) - V(q)*sin(V(th)-`q_c);
+end
+
+endmodule
