@@ -1,0 +1,28 @@
+`include "disciplines.vams"
+`include "constants.vams"
+
+module DCM(VP, VN, S);
+inout VP, VN, S;
+electrical VP, VN;
+rotational_omega S;
+
+// Maxon
+parameter real R_A = 79m, L_A = 26u;
+parameter real k_T = 13.7m, k_E = 13.7m;
+parameter real J = 200e-7, B = 10u;
+
+parameter real i_0 = 1.0, w_0 = 2.0, th_0 = 3.0;
+
+// branch (+, -) name;
+branch (VP, VN) VS;
+
+analog begin
+	// u = R i + L_A di/dt + k_E w
+	// di/dt = 1/L_A (u - R i - k_E w)
+	I(VS) <+ idt(1.0/L_A * (V(VS) - R_A*I(VS) - k_E*Omega(S))) + i_0;
+	
+	// M_L = J dw/dt - k_T + B w 
+	// dw/dt = 1/J (k_T - B w + M_L)
+	Omega(S) <+ idt(1.0/J * (k_T*I(VS) - B*Omega(S) + Tau(S))) + w_0;
+end
+endmodule
