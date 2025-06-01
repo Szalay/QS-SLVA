@@ -1,0 +1,17 @@
+`include "disciplines.vams"
+`include "constants.vams"
+
+module SinusoidalCarrier(carrier, GND);
+inout carrier, GND;
+electrical carrier, GND;
+
+parameter real A = 1;
+parameter real PH = 0;
+parameter real F = 1000;
+
+branch (carrier, GND) VC;
+
+analog begin
+	V(VC) <+ A * cos(2.0*`M_PI*F*$abstime + PH*`M_PI/180.0);
+end
+endmodule

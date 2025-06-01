@@ -1,0 +1,28 @@
+`include "disciplines.vams"
+`include "constants.vams"
+
+module TriangleWave(triangle, GND);
+inout triangle, GND;
+electrical triangle, GND;
+
+parameter real A = 1;
+parameter real PH = 0;
+parameter real F = 1000;
+
+branch (triangle, GND) VT;
+
+real T, t, m, u;
+
+analog begin
+	T = 1.0/F;
+	t = ($abstime + T*PH/360.0) % T;
+	m = 4*A/T;
+
+	if (t < T/2.0)
+		u = m*t - A;
+	else
+		u = A - m*(t - T/2.0);
+
+	V(VT) <+ u;
+end
+endmodule

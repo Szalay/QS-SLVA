@@ -1,0 +1,27 @@
+`include "disciplines.vams"
+`include "constants.vams"
+
+module Comparator(UDC, GND, u, c, m);
+inout UDC, GND, u, c, m;
+electrical UDC, GND, u, c, m;
+
+parameter real R = 0;
+
+branch (u, GND) U;
+
+real u_0;
+
+analog begin
+	// Not supported in OpenVAF
+	//@(cross(V(m) - V(c)))
+	if (V(m) > V(c))
+		u_0 = 1;
+	else
+		u_0 = 0;
+
+	//Not supported in OpenVAF
+	//V(U) <+ transition(u_0, 0, 100n) * V(UDC);
+
+	V(U) <+ u_0 * V(UDC);
+end
+endmodule
