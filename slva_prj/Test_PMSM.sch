@@ -1,6 +1,6 @@
 <Qucs Schematic 25.1.2>
 <Properties>
-  <View=-33,-28,1967,1052,0.750484,0,0>
+  <View=5,-61,1596,721,1.38805,0,0>
   <Grid=10,10,1>
   <DataSet=Test_PMSM.dat>
   <DataDisplay=Test_PMSM.dpl>
@@ -27,7 +27,7 @@
   <IProbe ic 1 380 350 -26 16 0 0>
   <.TR TR1 1 50 30 0 60 0 0 "lin" 1 "0" 1 "1 s" 1 "1001" 0 "Trapezoidal" 0 "2" 0 "1 ns" 0 "1e-16" 0 "150" 0 "0.001" 0 "1 pA" 0 "1 uV" 0 "26.85" 0 "1e-3" 0 "1e-6" 0 "1" 0 "CroutLU" 0 "no" 0 "yes" 0 "0" 0>
   <SpiceModel SpiceModel1 1 230 40 -28 18 0 0 ".MODEL PMSM PMSM" 1 ".MODEL Park Park" 1 ".MODEL InversePark InversePark" 0 "" 0 "Line_5=" 0>
-  <Sub PMSM1 1 610 290 -70 -182 0 0 "PMSM.sch" 0 "90" 1 "0.645" 1 "143e-6" 1 "188e-6" 1 "0.162e-6" 1>
+  <Sub PMSM1 1 610 290 -70 -182 0 0 "PMSM.sch" 0 "90" 1 "0.645" 1 "145e-6" 1 "188e-6" 1 "0.162e-6" 1>
 </Components>
 <Wires>
   <60 370 60 400 "" 0 0 0 "">

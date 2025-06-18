@@ -1,6 +1,6 @@
 <Qucs Schematic 25.1.2>
 <Properties>
-  <View=-444,-38,2125,1226,0.859177,0,0>
+  <View=-436,-30,2116,1226,0.86465,0,0>
   <Grid=10,10,1>
   <DataSet=Test_PMSM_SquareWave.dat>
   <DataDisplay=Test_PMSM_SquareWave.dpl>
@@ -40,7 +40,6 @@
   <IProbe ian 1 190 450 -26 16 0 0>
   <IProbe ibn 1 220 510 -26 16 0 0>
   <GND * 1 70 610 0 0 0 0>
-  <Sub SWI2 1 70 510 -30 -136 0 0 "SquareWaveInjection.sch" 0 "36" 1 "0" 1 "1" 1>
   <IProbe icp 1 250 250 -26 16 0 0>
   <IProbe iap 1 190 130 -26 16 0 0>
   <IProbe ibp 1 220 190 -26 16 0 0>
@@ -48,6 +47,7 @@
   <Sub SWI1 1 70 190 -30 -136 0 0 "SquareWaveInjection.sch" 0 "36" 1 "0" 1 "1" 1>
   <Sub PMSM1 1 470 190 -69 -178 0 0 "PMSM.sch" 0 "90" 1 "0.645" 1 "145e-6" 1 "188e-6" 1 "0.162e-6" 1>
   <Sub PMSM2 1 470 510 -70 -171 0 0 "PMSM.sch" 0 "90" 1 "0.645" 1 "145e-6" 1 "188e-6" 1 "0.162e-6" 1>
+  <Sub SWI2 1 70 510 -30 -136 0 0 "SquareWaveInjection.sch" 0 "36" 1 "0" 1 "-1" 1>
 </Components>
 <Wires>
   <70 1140 70 1160 "" 0 0 0 "">

@@ -1,6 +1,6 @@
 <Qucs Schematic 25.1.2>
 <Properties>
-  <View=-2445,-1201,4205,1546,1,2244,1109>
+  <View=-275,-24,1391,796,1.32439,0,0>
   <Grid=10,10,1>
   <DataSet=Test_SquareWave.dat>
   <DataDisplay=Test_SquareWave.dpl>
@@ -27,7 +27,7 @@
   <R R4 1 280 660 15 -26 0 1 "1 kOhm" 1 "26.85" 0 "0.0" 0 "0.0" 0 "26.85" 0 "european" 0>
   <R R5 1 390 660 15 -26 0 1 "1 kOhm" 1 "26.85" 0 "0.0" 0 "0.0" 0 "26.85" 0 "european" 0>
   <R R6 1 500 660 15 -26 0 1 "1 kOhm" 1 "26.85" 0 "0.0" 0 "0.0" 0 "26.85" 0 "european" 0>
-  <Sub SWI1 1 80 550 -30 -126 0 0 "SquareWaveInjection.sch" 0 "2" 1 "1" 1>
+  <Sub SWI1 1 80 550 -30 -136 0 0 "SquareWaveInjection.sch" 0 "24" 1 "1" 1 "1" 1>
 </Components>
 <Wires>
   <180 410 180 430 "" 0 0 0 "">

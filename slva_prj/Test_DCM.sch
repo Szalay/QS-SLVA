@@ -1,6 +1,6 @@
 <Qucs Schematic 25.1.2>
 <Properties>
-  <View=-38,-26,2736,1144,0.771777,0,0>
+  <View=-308,-12,1972,1110,0.967914,0,0>
   <Grid=10,10,1>
   <DataSet=Test_DCM.dat>
   <DataDisplay=Test_DCM.dpl>
