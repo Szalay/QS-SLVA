@@ -1,6 +1,6 @@
 <Qucs Schematic 25.1.2>
 <Properties>
-  <View=0,0,2141,910,1.4641,1,3>
+  <View=-175,-4,746,449,2.39735,0,0>
   <Grid=10,10,1>
   <DataSet=SquareWaveInjection.dat>
   <DataDisplay=SquareWaveInjection.dpl>
@@ -29,15 +29,15 @@
   <Text 10 -70 11 #000000 0 "  a">
   <Text 10 -10 11 #000000 0 "  b">
   <Text 10 50 11 #000000 0 "  c">
-  <.ID -30 -126 SWI "1=PHASE=1==" "1=DIRECTION=1==">
+  <.ID -30 -136 SWI "1=U_DC=36==" "1=PHASE=0=a: 0, b: 1, c: 2=" "1=DIRECTION=1=rising edge: 1, falling edge: -1=">
 </Symbol>
 <Components>
-  <SpiceModel VerilogAModules 1 80 50 -28 16 0 0 ".MODEL SquareWave SquareWave PH=PHASE DIR=DIRECTION" 1 "" 0 "" 0 "" 0 "Line_5=" 0>
   <SPICE_dev X1 1 220 280 -26 -102 0 0 "4" 1 "N" 0 "SquareWave" 1 "" 0>
   <Port GND 1 280 370 12 4 0 1 "4" 1 "analog" 0>
   <Port a 1 430 160 4 12 1 2 "1" 1 "analog" 0>
   <Port b 1 430 250 4 12 1 2 "2" 1 "analog" 0>
   <Port c 1 430 330 4 12 1 2 "3" 1 "analog" 0>
+  <SpiceModel VerilogAModules 1 80 50 -28 16 0 0 ".MODEL SquareWave SquareWave U_DC=U_DC PH=PHASE DIR=DIRECTION" 1 "" 0 "" 0 "" 0 "Line_5=" 0>
 </Components>
 <Wires>
   <260 310 280 310 "" 0 0 0 "">
