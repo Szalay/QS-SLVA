@@ -1,6 +1,6 @@
 <Qucs Schematic 25.1.2>
 <Properties>
-  <View=-196,-16,934,367,1.37297,0,0>
+  <View=-104,-15,934,381,2.01016,223,18>
   <Grid=10,10,1>
   <DataSet=PMSM.dat>
   <DataDisplay=PMSM.dpl>
@@ -44,16 +44,16 @@
   <Line 70 0 10 0 #000080 2 1>
   <Line 70 0 -10 0 #000000 2 1>
   <.PortSym 80 60 5 180 th_M>
-  <.ID -70 -176 PMSM "1=TH_M0=0=Initial mechanical rotor position=" "1=R=0.645==" "1=L_DD=143e-6==" "1=L_QQ=188e-6==" "1=GAMMA_0=0.162e-6==">
+  <.ID -70 -196 PMSM "1=TH_M0=0=Initial mechanical rotor position=" "1=R=0.645==" "1=L_DD=143e-6==" "1=L_QQ=188e-6==" "1=GAMMA_0=0.162e-6==">
 </Symbol>
 <Components>
   <Port S 1 290 220 4 12 1 2 "4" 1 "analog" 0>
   <Port b 1 290 160 4 12 1 2 "2" 1 "analog" 0>
   <SPICE_dev X1 1 200 220 -26 -132 0 0 "5" 1 "N" 0 "PMSM" 1 "" 0>
-  <SpiceModel VerilogAModules1 1 70 20 -28 18 0 0 ".MODEL PMSM PMSM th_M0=TH_M0 R=R L_dd=L_DD L_qq=L_QQ Gamma_0=GAMMA_0" 1 "" 0 "" 0 "" 0 "Line_5=" 0>
   <Port a 1 110 160 -23 12 0 0 "1" 1 "analog" 0>
   <Port c 1 110 220 -23 12 0 0 "3" 1 "analog" 0>
   <Port th_M 1 110 280 -23 12 0 0 "5" 1 "analog" 0>
+  <SpiceModel VerilogAModules1 1 110 20 -28 18 0 0 ".MODEL PMSM PMSM th_M0=TH_M0 R=R L_dd=L_DD L_qq=L_QQ Gamma_0=GAMMA_0" 1 "" 0 "" 0 "" 0 "Line_5=" 0>
 </Components>
 <Wires>
   <240 160 290 160 "" 0 0 0 "">

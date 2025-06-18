@@ -1,6 +1,6 @@
 <Qucs Schematic 25.1.2>
 <Properties>
-  <View=-431,-24,1538,666,0.762319,0,0>
+  <View=-97,-24,1203,666,1.64638,0,0>
   <Grid=10,10,1>
   <DataSet=Test_Sinusoidal.dat>
   <DataDisplay=Test_Sinusoidal.dpl>
@@ -22,7 +22,7 @@
   <R R2 1 280 290 15 -26 0 1 "1 kOhm" 1 "26.85" 0 "0.0" 0 "0.0" 0 "26.85" 0 "european" 0>
   <SPICE_dev X1 1 110 200 -26 -72 0 0 "2" 1 "N" 0 "SinusoidalCarrier" 1 "" 0>
   <GND * 1 100 600 0 0 0 0>
-  <Sub CARRIER1 1 100 530 -30 -116 0 0 "SinusoidalCarrier.sch" 0 "2" 1 "2000" 1 "1" 1>
+  <Sub CARRIER1 1 100 530 -30 -116 0 0 "SinusoidalCarrier.sch" 0 "2" 1 "1500" 1 "90" 1>
 </Components>
 <Wires>
   <180 340 180 360 "" 0 0 0 "">
@@ -35,8 +35,8 @@
   <50 120 50 200 "" 0 0 0 "">
   <50 200 70 200 "" 0 0 0 "">
   <100 580 100 600 "" 0 0 0 "">
-  <140 530 140 530 "carrier_sch" 170 500 0 "">
   <280 120 280 120 "carrier_va" 310 90 0 "">
+  <140 530 140 530 "carrier_sch" 170 500 0 "">
 </Wires>
 <Diagrams>
   <Rect 750 189 318 159 3 #c0c0c0 1 00 1 -1 0.5 1 1 -1 1 1 1 -1 1 1 315 0 225 1 0 0 "" "" "">

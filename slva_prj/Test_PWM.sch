@@ -1,6 +1,6 @@
 <Qucs Schematic 25.1.2>
 <Properties>
-  <View=0,0,1501,848,1,0,0>
+  <View=-24,-29,1483,771,1.4207,0,0>
   <Grid=10,10,1>
   <DataSet=Test_PWM.dat>
   <DataDisplay=Test_PWM.dpl>
