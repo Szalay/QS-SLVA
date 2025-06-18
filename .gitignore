@@ -4,4 +4,6 @@
 *.cir
 *.ngspice
 *.dpl
+*.exp
+*.lib
 
