@@ -8,10 +8,18 @@ electrical carrier, GND;
 parameter real A = 1;
 parameter real PH = 0;
 parameter real F = 1000;
+parameter real T_D = 1u;
 
 branch (carrier, GND) VC;
 
+real u;
+
 analog begin
-	V(VC) <+ A * cos(2.0*`M_PI*F*$abstime + PH*`M_PI/180.0);
+	if ($abstime < T_D)
+		u = 0;
+	else
+		u = A * cos(2.0*`M_PI*F*$abstime + PH*`M_PI/180.0);
+	
+	V(VC) <+ u;
 end
 endmodule
