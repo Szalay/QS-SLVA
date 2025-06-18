@@ -13,8 +13,8 @@ real u_0;
 
 analog begin
 	// Not supported in OpenVAF
-	//@(cross(V(m) - V(c)))
-	if (V(m) > V(c))
+	//@(cross(V(c) - V(m)))
+	if (V(c) > V(m))
 		u_0 = 1;
 	else
 		u_0 = 0;
